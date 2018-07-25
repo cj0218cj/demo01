@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.cj.dao.UserMapper">
+
+    <!--类与表不一致时可通过设置resultMap来实现对应关系-->
+    <resultMap id="userMap" type="cn.cj.model.User">
+        <!--id=唯一标签   type=结果映射成对应的类-->
+        <id property="u_id" column="U_ID"/>
+        <!--property=类里面属性   column=表里字段-->
+        <result property="u_name" column="U_NAME"/>
+        <result property="u_pass" column="U_PASS"/>
+    </resultMap>
+    <insert id="addUser">
+        INSERT INTO T_USER (U_ID, U_NAME, U_PASS) VALUES (T_USER_SEQ.nextval,#{u_name},#{u_pass})
+    </insert>
+    <update id="updateUser">
+        UPDATE T_USER SET U_PASS=#{u_pass} where U_ID=#{u_id}
+    </update>
+    <select id="getUserByNameAndPass" resultType="cn.cj.model.User">
+        SELECT * FROM T_USER WHERE U_NAME=#{u_name} and U_PASS=#{u_pass}
+    </select>
+    <select id="getUserByName" resultType="cn.cj.model.User">
+        SELECT * FROM T_USER WHERE U_NAME=#{u_name}
+    </select>
+
+</mapper>
