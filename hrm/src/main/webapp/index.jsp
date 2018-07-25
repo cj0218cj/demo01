@@ -46,7 +46,7 @@
     <h2>Welcome</h2>
     <div id="login">
         <legend>用户登录</legend>
-        <form action="login.do" method="post">
+        <form action="login.do?" method="post">
             账号：<input type="text" name="u_name" style="height: 40px"/><br/>
             密码：<input type="password" name="u_pass" style="height: 40px"/><br/>
             <input type="submit" value="登录" style="font-size: 30px">
