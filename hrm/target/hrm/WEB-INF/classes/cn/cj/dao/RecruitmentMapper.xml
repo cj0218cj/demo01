@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.cj.dao.RecruitmentMapper">
+    <select id="getRecruitmentByState" resultMap="recruitmentMap">
+        SELECT * FROM T_RECRUITMENT,T_JOB WHERE T_RECRUITMENT.J_ID=T_JOB.J_ID AND T_RECRUITMENT.RT_STATE=#{state}
+    </select>
+    <select id="getCurrentPageRecruitmentByState" resultMap="recruitmentMap">
+        SELECT * FROM (SELECT T_RECRUITMENT.*,rownum rn FROM T_RECRUITMENT WHERE T_RECRUITMENT.RT_STATE=#{0}) RECRUITMENT,
+        T_JOB where RECRUITMENT.J_ID=T_JOB.J_ID and rn between #{1} and #{2}
+    </select>
+    <select id="getRecruitmentById" resultMap="recruitmentMap">
+        SELECT * FROM T_RECRUITMENT,T_JOB WHERE T_RECRUITMENT.J_ID=T_JOB.J_ID AND T_RECRUITMENT.RT_ID=#{rt_id}
+    </select>
+
+    <resultMap id="recruitmentMap" type="cn.cj.model.Recruitment">
+        <id property="rt_id" column="RT_ID"/>
+
+        <result property="rt_number" column="RT_NUMBER"/>
+        <result property="rt_message" column="RT_MESSAGE"/>
+        <result property="rt_workingAddress" column="RT_WORKINGADDRESS"/>
+        <result property="rt_requirements" column="RT_REQUIREMENTS"/>
+        <result property="rt_time" column="RT_TIME"/>
+        <result property="rt_state" column="RT_STATE"/>
+        <association property="job" javaType="cn.cj.model.Job">
+            <id property="j_id" column="J_ID"/>
+            <result property="j_name" column="J_NAME"/>
+        </association>
+    </resultMap>
+</mapper>

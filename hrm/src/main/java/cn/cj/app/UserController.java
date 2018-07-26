@@ -30,7 +30,7 @@ public class UserController {
             int currentpage=1;
             return success(currentpage,session);
         }else{
-            model.addAttribute("error","ÓÃ»§Ãû»òÃÜÂë´íÎó");
+            model.addAttribute("error","ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
             return "../../index";
         }
     }
@@ -45,7 +45,7 @@ public class UserController {
     @RequestMapping("/register.do")
     public String register(User user,Model model)throws Exception{
         if (userService.getUserByName(user)!=null){
-            model.addAttribute("error","ÓÃ»§ÒÑ´æÔÚ");
+            model.addAttribute("error","ï¿½Ã»ï¿½ï¿½Ñ´ï¿½ï¿½ï¿½");
             return "register";
         }else{
             userService.addUser(user);
@@ -64,5 +64,29 @@ public class UserController {
         session.setAttribute("totalPages",totalPages);
         session.setAttribute("page",currentPage);
         return "success";
+    }
+    @RequestMapping("/personalmessage.do")
+    public String personalmessage(HttpSession session)throws Exception{
+        return "personermessage";
+    }
+    @RequestMapping("/returnback.do")
+    public String returnback()throws Exception{
+        return "success";
+    }
+    @RequestMapping("/updatePass.do")
+    public String updatePass()throws Exception{
+        return "updatePass";
+    }
+    @RequestMapping("/passUpdate.do")
+    public String passUpdate(String old,String pass,HttpSession session,Model model)throws Exception{
+        User user= (User) session.getAttribute("user");
+        if (old.equals(user.getU_pass())){
+            user.setU_pass(pass);
+            userService.updateUser(user);
+            return "../../index";
+        }else{
+            model.addAttribute("error","åŸå¯†ç ä¸æ­£ç¡®");
+            return "updatePass";
+        }
     }
 }
