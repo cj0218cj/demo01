@@ -16,6 +16,7 @@
     <title></title>
 </head>
 <body>
+<form action="applyJob.do" method="post">
 <%
     Recruitment rt= (Recruitment) session.getAttribute("ret");
 %>
@@ -49,7 +50,7 @@
         <th>面议</th>
     </tr>
 </table>
-<form action="" method="post">
+
     <input type="submit" value="申请职位">
 </form>
 </body>

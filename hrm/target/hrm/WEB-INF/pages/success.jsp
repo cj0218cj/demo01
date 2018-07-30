@@ -30,7 +30,7 @@
         #title{
             width: 1000px;
             height: 100px;
-            background: url("../../WEB-INF/pages/title.jpg");
+            background: url("../../resources/images/title.jpg");
             margin: auto;
             font-size: 40px;
             font-family: 华文行楷;
@@ -86,10 +86,11 @@
 </div>
 <div id="personal">
     <ul>
-        <li><a href="personalmessage.do">个人信息</a></li>
+
         <li><a href="updatePass.do">修改密码</a></li>
-        <li><a href="">查看个人简历</a></li>
-        <li><a href="">新建简历</a></li>
+        <li><a href="lookResumes.do">查看个人简历</a></li>
+        <li><a href="addResume.do">新建简历</a></li>
+        <li><a href="getinvite.do">面试邀请</a></li>
     </ul>
 </div>
     <div id="left">

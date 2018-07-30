@@ -1,7 +1,9 @@
 package cn.cj.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by cj on 2018/7/25.
@@ -16,6 +18,7 @@ public class Recruitment implements Serializable{
     private String rt_requirements;
     private Date rt_time;
     private int rt_state;
+    private List<RecruManage> recruManages=new ArrayList<RecruManage>();
 
     public Recruitment() {
     }
@@ -101,6 +104,14 @@ public class Recruitment implements Serializable{
 
     public void setRt_state(int rt_state) {
         this.rt_state = rt_state;
+    }
+
+    public List<RecruManage> getRecruManages() {
+        return recruManages;
+    }
+
+    public void setRecruManages(List<RecruManage> recruManages) {
+        this.recruManages = recruManages;
     }
 
     @Override

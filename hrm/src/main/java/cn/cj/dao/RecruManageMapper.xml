@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.cj.dao.RecruManageMapper">
+    <insert id="addRecruManage">
+        INSERT INTO T_RECRUMANAGE (RM_ID, RT_ID, R_ID, RM_STATE, U_ID) VALUES (T_RECRUMANAGE_SEQ.nextval,#{recruitment.rt_id},#{resumes.r_id},0,#{user.u_id})
+    </insert>
+    <update id="updateRecruManage">
+    UPDATE T_RECRUMANAGE SET RM_STATE=#{state} where RM_ID=#{rm_id}
+    </update>
+    <delete id="deleteRecruManage">
+  DELETE FROM T_RECRUMANAGE WHERE RM_ID=#{rm_id}
+    </delete>
+    <select id="getRecruManageByRid" resultType="cn.cj.model.RecruManage">
+    SELECT * from T_RECRUMANAGE,T_RESUME WHERE T_RECRUMANAGE.R_ID=T_RESUME.R_ID and RM_STATE=#{state}
+    </select>
+    <select id="getRecruManageByUser" resultType="cn.cj.model.RecruManage">
+    SELECT * from T_RECRUMANAGE,T_RECRUITMENT,T_JOB WHERE T_RECRUMANAGE.RT_ID=T_RECRUITMENT.RT_ID and T_RECRUITMENT.J_ID=T_JOB.J_ID AND U_ID=#{user.u_id} and RM_STATE=#{state}
+    </select>
+    <select id="getRecruManageById" resultType="cn.cj.model.RecruManage">
+        SELECT * FROM T_RECRUMANAGE,T_RECRUITMENT,T_JOB WHERE T_RECRUMANAGE.RT_ID=T_RECRUITMENT.RT_ID and T_RECRUITMENT.J_ID=T_JOB.J_ID AND RM_ID=#{rm_id}
+    </select>
+    <resultMap id="qq" type="cn.cj.model.RecruManage">
+        <id property="rm_id" column="RM_ID"/>
+        <association property="recruitment" javaType="cn.cj.model.Recruitment">
+            <id property="rt_id" column="RT_ID"/>
+
+        </association>
+    </resultMap>
+</mapper>

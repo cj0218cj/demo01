@@ -1,6 +1,8 @@
 package cn.cj.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by cj on 2018/7/25.
@@ -10,6 +12,7 @@ public class User implements Serializable{
     private int u_id;
     private String u_name;
     private String u_pass;
+    private List<Resumes> resumesList=new ArrayList<Resumes>();
 
     public User() {
     }
@@ -41,6 +44,14 @@ public class User implements Serializable{
 
     public void setU_pass(String u_pass) {
         this.u_pass = u_pass;
+    }
+
+    public List<Resumes> getResumesList() {
+        return resumesList;
+    }
+
+    public void setResumesList(List<Resumes> resumesList) {
+        this.resumesList = resumesList;
     }
 
     @Override

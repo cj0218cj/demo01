@@ -2,6 +2,8 @@
 <project version="4">
   <component name="Encoding" native2AsciiForPropertiesFiles="true" defaultCharsetForPropertiesFiles="GBK">
     <file url="file://$PROJECT_DIR$" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/cn/cj/app/ResumeController.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/cn/cj/app/UserController.java" charset="GBK" />
     <file url="PROJECT" charset="GBK" />
   </component>
 </project>

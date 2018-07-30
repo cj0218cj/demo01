@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.cj.dao.ResumeMapper">
+    <insert id="addResume">
+    INSERT INTO T_RESUME VALUES (T_RESUME_SEQ.nextval,#{r_user.u_id},#{r_name},#{r_age},#{r_sex},#{r_school},#{r_major},#{r_phone},#{r_workingYears},#{r_workExperience},#{r_introduce})
+    </insert>
+
+    <update id="updateResume">
+    UPDATE T_RESUME SET R_NAME=#{r_name},R_AGE=#{r_age},R_SEX=#{r_sex},R_SCHOOL=#{r_school},R_MAJOR=#{r_major},R_PHONE=#{r_phone},
+    R_WORKINGYEARS=#{r_workingYears},R_WORKEXPERIENCE=#{r_workExperience},R_INTRODUCE=#{r_introduce} where R_ID=#{r_id}
+    </update>
+    <delete id="deleteResume">
+    DELETE FROM T_RESUME WHERE R_ID=#{r_id}
+    </delete>
+    <select id="getResumeById" resultType="cn.cj.model.Resumes">
+        SELECT * from T_RESUME WHERE R_ID=#{r_id}
+    </select>
+    <select id="getResumeMapperByUser" resultType="cn.cj.model.Resumes">
+        SELECT * from T_RESUME WHERE U_ID=#{u_id}
+    </select>
+
+
+</mapper>

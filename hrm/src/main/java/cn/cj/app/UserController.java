@@ -30,7 +30,7 @@ public class UserController {
             int currentpage=1;
             return success(currentpage,session);
         }else{
-            model.addAttribute("error","�û������������");
+            model.addAttribute("error","用户名或密码不正确");
             return "../../index";
         }
     }
@@ -45,7 +45,7 @@ public class UserController {
     @RequestMapping("/register.do")
     public String register(User user,Model model)throws Exception{
         if (userService.getUserByName(user)!=null){
-            model.addAttribute("error","�û��Ѵ���");
+            model.addAttribute("error","用户已存在");
             return "register";
         }else{
             userService.addUser(user);
@@ -58,7 +58,9 @@ public class UserController {
         int totalRows=list.size();
         int totalPages= DoPage.getPages(totalRows);
         final int NUM=5;
-        List<Recruitment> recruitments=recruitmentService.getCurrentPageRecruitmentByState(1,currentPage,NUM);
+        int begin=(currentPage-1)*NUM+1;
+        int end=currentPage*NUM;
+        List<Recruitment> recruitments=recruitmentService.getCurrentPageRecruitmentByState(1,begin,end);
         System.out.println(recruitments.size());
         session.setAttribute("allRecuritment",recruitments);
         session.setAttribute("totalPages",totalPages);
