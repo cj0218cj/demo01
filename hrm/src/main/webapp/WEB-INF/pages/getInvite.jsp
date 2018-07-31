@@ -28,7 +28,7 @@
     }else{
         for (int i=0;i<list.size();i++){
 %>
-    <a href="inviteDetails.do?rm_id=<%=list.get(i).getRm_id()%>" ><%=list.get(i).getRecruitment().getJob().getJ_name()%></a>
+    <a href="inviteDetails.do?rm_id=<%=list.get(i).getRm_id()%>" ><%=list.get(i).getRecruitment().getJob().getJ_name()%></a><br/>
 <%
         }
     }

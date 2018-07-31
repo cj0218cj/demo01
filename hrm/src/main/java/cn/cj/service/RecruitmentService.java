@@ -11,4 +11,7 @@ public interface RecruitmentService {
     List<Recruitment> getRecruitmentByState(int state);
     List<Recruitment> getCurrentPageRecruitmentByState(int state,int begin,int end);
     Recruitment getRecruitmentById(int rt_id);
+    int updateRecruitment(Recruitment recruitment);
+    int addRecruitment(Recruitment recruitment);
+    int deleteRecruitment(Recruitment recruitment);
 }

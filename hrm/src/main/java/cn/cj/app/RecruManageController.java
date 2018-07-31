@@ -42,9 +42,16 @@ public class RecruManageController {
         return "getInvite";
     }
     @RequestMapping("/inviteDetails.do")
-    public String inviteDetails(int rm_id, Model model)throws Exception{
+    public String inviteDetails(int rm_id, HttpSession session)throws Exception{
         RecruManage recruManage=recruManageService.getRecruManageById(rm_id);
-        model.addAttribute("recruManage",recruManage);
+        session.setAttribute("recruManage",recruManage);
         return "inviteDetails";
+    }
+    @RequestMapping("/inviteResult.do")
+    public String inviteResult(int state,HttpSession session)throws Exception{
+        RecruManage recruManage= (RecruManage) session.getAttribute("recruManage");
+        recruManage.setState(state);
+        recruManageService.updateRecruManage(recruManage);
+        return "success";
     }
 }

@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="cn.cj.dao.RecruitmentMapper">
+    <insert id="addRecruitment">
+      <selectKey resultType="java.lang.Integer" order="BEFORE" keyProperty="rt_id">
+        SELECT T_RECRUITMENT_SEQ.nextval FROM DUAL
+      </selectKey>
+        INSERT INTO T_RECRUITMENT (RT_ID, J_ID, RT_NUMBER, RT_MESSAGE, RT_WORKINGADDRESS, RT_REQUIREMENTS, RT_TIME, RT_STATE) VALUES
+        (#{rt_id},#{job.j_id},#{rt_number},#{rt_message},#{rt_workingAddress},#{rt_requirements},sysdate,0)
+
+</insert>
+    <update id="updateRecruitment">
+        UPDATE T_RECRUITMENT SET J_ID=#{job.j_id},RT_NUMBER=#{rt_number},RT_MESSAGE=#{rt_message},RT_WORKINGADDRESS=#{rt_workingAddress},
+          RT_REQUIREMENTS=#{rt_requirements},RT_STATE=#{rt_state} where RT_ID=#{rt_id}
+    </update>
+    <delete id="deleteRecruitment">
+        DELETE FROM T_RECRUITMENT WHERE RT_ID=#{rt_id}
+    </delete>
     <select id="getRecruitmentByState" resultMap="recruitmentMap">
         SELECT * FROM T_RECRUITMENT,T_JOB WHERE T_RECRUITMENT.J_ID=T_JOB.J_ID AND T_RECRUITMENT.RT_STATE=#{state}
     </select>

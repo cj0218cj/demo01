@@ -57,7 +57,7 @@
             账号：<input type="text" name="m_name" style="height: 40px"/><br/>
             密码：<input type="password" name="m_pass" style="height: 40px"/><br/>
             <input type="submit" value="登录" style="font-size: 30px">
-            <a href="fanhui.do">返回</a>
+            <a href="back.do">返回</a>
         </form>
         <h3>${error}</h3>
 

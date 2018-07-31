@@ -26,4 +26,16 @@ public class RecruitmentServiceImpl implements RecruitmentService {
     public Recruitment getRecruitmentById(int rt_id) {
         return recruitmentMapper.getRecruitmentById(rt_id);
     }
+
+    public int updateRecruitment(Recruitment recruitment) {
+        return recruitmentMapper.updateRecruitment(recruitment);
+    }
+
+    public int addRecruitment(Recruitment recruitment) {
+        return recruitmentMapper.addRecruitment(recruitment);
+    }
+
+    public int deleteRecruitment(Recruitment recruitment) {
+        return recruitmentMapper.deleteRecruitment(recruitment);
+    }
 }

@@ -20,21 +20,21 @@
     <table>
         <tr>
             <td>面试职位：</td>
-            <td>${recruManage.recruitment.job.j_name}</td>
+            <td>${sessionScope.recruManage.recruitment.job.j_name}</td>
         </tr>
         <tr>
             <td>面试时间：</td>
-            <td>${recruManage.recruitment.rt_time}</td>
+            <td>${sessionScope.recruManage.recruitment.rt_time}</td>
         </tr>
         <tr>
             <td>面试地点：</td>
-            <td>${recruManage.recruitment.rt_workingAddress}</td>
+            <td>${sessionScope.recruManage.recruitment.rt_workingAddress}</td>
         </tr>
     </table>
     <input type="radio" value="2" name="state">去面试<br/>
     <input type="radio" value="-1" name="state">不去了<br/>
     <input type="submit" value="提交">
-    <a href="/returnback.do">返回</a>
+    <a href="returnback.do">返回</a>
 </form>
 </body>
 </html>

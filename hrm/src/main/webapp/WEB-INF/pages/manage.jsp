@@ -64,7 +64,7 @@
 <div id="div1">
     <ul>
 
-        <li><a href="">发布招聘</a></li>
+        <li><a href="inviteManage.do?currentPage=1">招聘管理</a></li>
         <li><a href="">查看简历</a></li>
         <li><a href="">面试结果</a></li>
         <li><a href="">员工管理</a></li>

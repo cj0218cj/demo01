@@ -23,6 +23,10 @@ public class Recruitment implements Serializable{
     public Recruitment() {
     }
 
+    public Recruitment(int rt_id) {
+        this.rt_id = rt_id;
+    }
+
     public Recruitment(Job job, int rt_number, String rt_message, String rt_workingAddress, String rt_requirements, int rt_state) {
         this.job = job;
         this.rt_number = rt_number;

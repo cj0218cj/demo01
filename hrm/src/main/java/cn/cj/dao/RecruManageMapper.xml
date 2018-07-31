@@ -13,17 +13,34 @@
     <select id="getRecruManageByRid" resultType="cn.cj.model.RecruManage">
     SELECT * from T_RECRUMANAGE,T_RESUME WHERE T_RECRUMANAGE.R_ID=T_RESUME.R_ID and RM_STATE=#{state}
     </select>
-    <select id="getRecruManageByUser" resultType="cn.cj.model.RecruManage">
+    <select id="getRecruManageByUser" resultMap="qq">
     SELECT * from T_RECRUMANAGE,T_RECRUITMENT,T_JOB WHERE T_RECRUMANAGE.RT_ID=T_RECRUITMENT.RT_ID and T_RECRUITMENT.J_ID=T_JOB.J_ID AND U_ID=#{user.u_id} and RM_STATE=#{state}
     </select>
-    <select id="getRecruManageById" resultType="cn.cj.model.RecruManage">
+    <select id="getRecruManageById" resultMap="qq">
         SELECT * FROM T_RECRUMANAGE,T_RECRUITMENT,T_JOB WHERE T_RECRUMANAGE.RT_ID=T_RECRUITMENT.RT_ID and T_RECRUITMENT.J_ID=T_JOB.J_ID AND RM_ID=#{rm_id}
     </select>
     <resultMap id="qq" type="cn.cj.model.RecruManage">
         <id property="rm_id" column="RM_ID"/>
+        <result property="state" column="RM_STATE"/>
         <association property="recruitment" javaType="cn.cj.model.Recruitment">
             <id property="rt_id" column="RT_ID"/>
+            <association property="job" javaType="cn.cj.model.Job">
+                <id property="j_id" column="J_ID"/>
+                <result property="j_name" column="J_NAME"/>
+            </association>
+        </association>
+        <association property="resumes" javaType="cn.cj.model.Resumes">
+            <id property="r_id" column="R_ID"/>
 
+            <result property="r_name" column="R_NAME"/>
+            <result property="r_age" column="R_AGE"/>
+            <result property="r_sex" column="R_SEX"/>
+            <result property="r_school" column="R_SCHOOL"/>
+            <result property="r_major" column="R_MAJOR"/>
+            <result property="r_phone" column="R_PHONE"/>
+            <result property="r_workingYears" column="R_WORKINGYEARS"/>
+            <result property="r_workExperience" column="R_WORKEXPERIENCE"/>
+            <result property="r_introduce" column="R_INTRODUCE"/>
         </association>
     </resultMap>
 </mapper>

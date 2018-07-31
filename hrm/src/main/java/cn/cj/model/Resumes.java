@@ -21,7 +21,8 @@ public class Resumes implements Serializable{
     private String r_workingYears;
     private String r_workExperience;
     private String r_introduce;
-    private List<RecruManage> recruManages=new ArrayList<RecruManage>();
+//    private List<RecruManage> recruManages=new ArrayList<RecruManage>();
+    private RecruManage recruManage;
     public Resumes() {
     }
 
@@ -138,12 +139,12 @@ public class Resumes implements Serializable{
         this.r_introduce = r_introduce;
     }
 
-    public List<RecruManage> getRecruManages() {
-        return recruManages;
+    public RecruManage getRecruManage() {
+        return recruManage;
     }
 
-    public void setRecruManages(List<RecruManage> recruManages) {
-        this.recruManages = recruManages;
+    public void setRecruManage(RecruManage recruManage) {
+        this.recruManage = recruManage;
     }
 
     @Override
