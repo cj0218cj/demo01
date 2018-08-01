@@ -1,9 +1,12 @@
 package cn.cj.app;
 
+import cn.cj.model.RecruManage;
 import cn.cj.model.Resumes;
 import cn.cj.model.User;
+import cn.cj.service.RecruManageService;
 import cn.cj.service.ResumeService;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.annotation.Resource;
@@ -91,4 +94,5 @@ public class ResumeController {
         resumeService.deleteResume(resumes);
         return lookResumes(session);
     }
+
 }

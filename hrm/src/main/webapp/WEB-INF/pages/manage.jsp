@@ -65,15 +65,15 @@
     <ul>
 
         <li><a href="inviteManage.do?currentPage=1">招聘管理</a></li>
-        <li><a href="">查看简历</a></li>
-        <li><a href="">面试结果</a></li>
-        <li><a href="">员工管理</a></li>
+        <li><a href="getResume.do?currentPage=1">查看简历</a></li>
+        <li><a href="meetingResult.do?currentPage=1">面试结果</a></li>
+        <li><a href="employeeManage.do">员工管理</a></li>
     </ul>
 </div>
 <div id="div2">
     <ul>
 
-        <li><a href="">部门管理</a></li>
+        <li><a href="deptManage.do?currentPage=1">部门管理</a></li>
         <li><a href="">薪资管理</a></li>
         <li><a href="">考勤管理</a></li>
         <li><a href="">培训管理</a></li>

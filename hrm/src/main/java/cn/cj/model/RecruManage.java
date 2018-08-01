@@ -11,7 +11,7 @@ public class RecruManage implements Serializable{
     private Recruitment recruitment;
     private Resumes resumes;
     private int state;
-    //state=0   投递简历    state=1 面试邀请    state=2 确认面试    state=3 面试合格
+    //state=0   投递简历    state=1 面试邀请    state=2 确认面试    state=3 面试合格  state=4   已读简历
     private User user;
 
     public RecruManage() {

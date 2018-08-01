@@ -13,8 +13,13 @@ private Dept dept;
 private String j_name;
 private int j_basePay;
 private List<Recruitment> recruitments;
+private List<Employee> employees;
 
     public Job() {
+    }
+
+    public Job(int j_id) {
+        this.j_id = j_id;
     }
 
     public Job(Dept dept, String j_name, int j_basePay) {
@@ -61,6 +66,14 @@ private List<Recruitment> recruitments;
 
     public void setRecruitments(List<Recruitment> recruitments) {
         this.recruitments = recruitments;
+    }
+
+    public List<Employee> getEmployees() {
+        return employees;
+    }
+
+    public void setEmployees(List<Employee> employees) {
+        this.employees = employees;
     }
 
     @Override

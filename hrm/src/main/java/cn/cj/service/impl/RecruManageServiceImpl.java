@@ -39,4 +39,20 @@ public class RecruManageServiceImpl implements RecruManageService {
     public RecruManage getRecruManageById(int rm_id) {
         return recruManageMapper.getRecruManageById(rm_id);
     }
+
+    public List<RecruManage> getRecruManageByState(int state) {
+        return recruManageMapper.getRecruManageByState(state);
+    }
+
+    public List<RecruManage> getCurrentPageRecruManageByState(int state, int begin, int end) {
+        return recruManageMapper.getCurrentPageRecruManageByState(state,begin,end);
+    }
+
+    public List<RecruManage> getRecruManageByUserState(User user, int state) {
+        return recruManageMapper.getRecruManageByUserState(user.getU_id(),state);
+    }
+
+    public List<RecruManage> getCurrentPageRecruManageByUserState(int state, int begin, int end, User user) {
+        return recruManageMapper.getCurrentPageRecruManageByUserState(state,begin,end,user.getU_id());
+    }
 }

@@ -1,5 +1,6 @@
 package cn.cj.app;
 
+import cn.cj.model.Dept;
 import cn.cj.model.Manager;
 import cn.cj.service.ManagerService;
 import org.springframework.stereotype.Controller;
@@ -7,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * Created by cj on 2018/7/30.

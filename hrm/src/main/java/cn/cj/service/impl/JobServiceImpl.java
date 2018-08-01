@@ -22,4 +22,28 @@ public class JobServiceImpl implements JobService{
     public Job getJobById(int j_id) {
         return jobMapper.getJobById(j_id);
     }
+
+    public List<Job> getJobByDept(int d_id) {
+        return jobMapper.getJobByDept(d_id);
+    }
+
+    public List<Job> getCurrentPageJobByDept(int d_id, int begin, int end) {
+        return jobMapper.getCurrentPageJobByDept(d_id,begin,end);
+    }
+
+    public int addJob(Job job) {
+        return jobMapper.addJob(job);
+    }
+
+    public int deleteJob(Job job) {
+        return jobMapper.deleteJob(job);
+    }
+
+    public int updateJob(Job job) {
+        return jobMapper.updateJob(job);
+    }
+
+    public int deleteJobByDept(int d_id) {
+        return jobMapper.deleteJobByDept(d_id);
+    }
 }

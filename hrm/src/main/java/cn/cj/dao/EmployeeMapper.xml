@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.cj.dao.EmployeeMapper">
+    <insert id="addEmployee">
+        INSERT INTO T_EMPLOYEE (E_ID, U_ID, E_NAME, E_PASS, E_PHONE, D_ID, J_ID, E_STATE, E_SALARY) VALUES
+        (T_EMPLOYEE_SEQ.nextval,#{user.u_id},#{e_name},#{e_pass},#{e_phone},#{dept.d_id},#{job.j_id},0,#{e_salary})
+    </insert>
+    <update id="updateEmployee">
+        UPDATE T_EMPLOYEE SET E_NAME=#{e_name},E_PASS=#{e_pass},E_PHONE=#{e_phone},D_ID=#{dept.d_id},J_ID=#{job.j_id},E_STATE=#{e_state},E_SALARY=#{e_salary} where E_ID=#{e_id}
+    </update>
+    <select id="getEmployeeById" resultMap="employees">
+        SELECT * FROM T_EMPLOYEE,T_DEPT,T_JOB WHERE T_EMPLOYEE.J_ID=T_JOB.J_ID AND T_EMPLOYEE.D_ID=T_DEPT.D_ID AND T_EMPLOYEE.E_ID=#{e_id}
+    </select>
+    <select id="getEmployeeByJob" resultMap="employees">
+        SELECT * FROM T_EMPLOYEE,T_DEPT,T_JOB WHERE T_EMPLOYEE.J_ID=T_JOB.J_ID AND T_EMPLOYEE.D_ID=T_DEPT.D_ID AND T_EMPLOYEE.J_ID=#{j_id}
+    </select>
+    <select id="getEmployeeByDept" resultMap="employees">
+        SELECT * FROM T_EMPLOYEE,T_DEPT,T_JOB WHERE T_EMPLOYEE.J_ID=T_JOB.J_ID AND T_EMPLOYEE.D_ID=T_DEPT.D_ID AND T_EMPLOYEE.D_ID=#{d_id}
+    </select>
+    <select id="getCurrentPageEmployeeByJob" resultMap="employees">
+        SELECT * FROM (SELECT T_EMPLOYEE.*,rownum rn FROM T_EMPLOYEE WHERE T_EMPLOYEE.J_ID=#{0}) RECRUITMENT,
+        T_JOB,T_DEPT where RECRUITMENT.J_ID=T_JOB.J_ID and RECRUITMENT.D_ID=T_DEPT.D_ID and rn between #{1} and #{2}
+    </select>
+    <select id="getCurrentPageEmployeeByDept" resultMap="employees">
+        SELECT * FROM (SELECT T_EMPLOYEE.*,rownum rn FROM T_EMPLOYEE WHERE T_EMPLOYEE.D_ID=#{0}) RECRUITMENT,
+        T_JOB,T_DEPT where RECRUITMENT.J_ID=T_JOB.J_ID and RECRUITMENT.D_ID=T_DEPT.D_ID and rn between #{1} and #{2}
+    </select>
+    <resultMap id="employees" type="cn.cj.model.Employee">
+        <id property="e_id" column="E_ID"/>
+        <result property="e_name" column="E_NAME"/>
+        <result property="e_pass" column="E_PASS"/>
+        <result property="e_phone" column="E_PHONE"/>
+        <result property="e_state" column="E_STATE"/>
+        <result property="e_salary" column="E_SALARY"/>
+        <association property="user" javaType="cn.cj.model.User">
+            <id property="u_id" column="U_ID"/>
+            <result property="u_name" column="U_NAME"/>
+            <result property="u_pass" column="U_PASS"/>
+        </association>
+        <association property="job" javaType="cn.cj.model.Job">
+            <id property="j_id" column="J_ID"/>
+            <result property="j_name" column="J_NAME"/>
+        </association>
+        <association property="dept" javaType="cn.cj.model.Dept">
+            <id property="d_id" column="D_ID"/>
+            <result property="d_name" column="D_NAME"/>
+
+        </association>
+    </resultMap>
+</mapper>

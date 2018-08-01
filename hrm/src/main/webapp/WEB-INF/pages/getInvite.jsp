@@ -33,6 +33,7 @@
         }
     }
 %>
-<a href="/returnback.do">返回</a>
+<a href="getOffer.do?currentPage=1">查看offer</a>
+<a href="returnback.do">返回</a>
 </body>
 </html>

@@ -13,7 +13,7 @@ public class User implements Serializable{
     private String u_name;
     private String u_pass;
     private List<Resumes> resumesList=new ArrayList<Resumes>();
-
+    private Employee employee;
     public User() {
     }
 
@@ -52,6 +52,14 @@ public class User implements Serializable{
 
     public void setResumesList(List<Resumes> resumesList) {
         this.resumesList = resumesList;
+    }
+
+    public Employee getEmployee() {
+        return employee;
+    }
+
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
     }
 
     @Override

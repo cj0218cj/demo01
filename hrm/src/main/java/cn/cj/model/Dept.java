@@ -13,8 +13,13 @@ public class Dept implements Serializable{
     private String d_name;
     private Date d_date;
     private List<Job> jobs;
+    private List<Employee> employees;
 
     public Dept() {
+    }
+
+    public Dept(int d_id) {
+        this.d_id = d_id;
     }
 
     public Dept(String d_name) {
@@ -57,6 +62,14 @@ public class Dept implements Serializable{
 
     public void setJobs(List<Job> jobs) {
         this.jobs = jobs;
+    }
+
+    public List<Employee> getEmployees() {
+        return employees;
+    }
+
+    public void setEmployees(List<Employee> employees) {
+        this.employees = employees;
     }
 
     @Override

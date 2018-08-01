@@ -98,13 +98,14 @@ public class RecruitmentController {
         session.setAttribute("totalPages",totalPages);
         session.setAttribute("page",currentPage);
         return "deleteRecruitment";
-    }@RequestMapping("/recruitmentDelete.do")
+    }
+    @RequestMapping("/recruitmentDelete.do")
     public String recruitmentDelete(int rt_id,HttpSession session)throws Exception{
         recruitmentService.deleteRecruitment(new Recruitment(rt_id));
         return deleteRecruitment(1,session);
     }
     @RequestMapping("/updateState.do")
-    public String updateState(int rt_id,HttpSession session)throws Exception{
+    public String updateState(int rt_id)throws Exception{
         Recruitment recruitment=recruitmentService.getRecruitmentById(rt_id);
 
         recruitment.setRt_state(1);
@@ -113,6 +114,20 @@ public class RecruitmentController {
     }
     @RequestMapping("/returnManage.do")
     public String returnManage()throws Exception{
+        return "manage";
+    }
+    @RequestMapping("/updateInviteMessage.do")
+    public String updateInviteMessage(int rt_id,Model model)throws Exception{
+        Recruitment recruitment=recruitmentService.getRecruitmentById(rt_id);
+        model.addAttribute("rtm",recruitment);
+        return "updateInviteMessage";
+    }
+    @RequestMapping("/messageUpdate.do")
+    public String messageUpdate(Recruitment recruitment,int j_id)throws Exception{
+        Job job=jobService.getJobById(j_id);
+        recruitment.setJob(job);
+        recruitment.setRt_state(0);
+        recruitmentService.updateRecruitment(recruitment);
         return "manage";
     }
 }

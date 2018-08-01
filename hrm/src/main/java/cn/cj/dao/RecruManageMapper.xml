@@ -19,6 +19,23 @@
     <select id="getRecruManageById" resultMap="qq">
         SELECT * FROM T_RECRUMANAGE,T_RECRUITMENT,T_JOB WHERE T_RECRUMANAGE.RT_ID=T_RECRUITMENT.RT_ID and T_RECRUITMENT.J_ID=T_JOB.J_ID AND RM_ID=#{rm_id}
     </select>
+    <select id="getRecruManageByState" resultMap="qq">
+        SELECT * FROM T_RECRUMANAGE,T_RECRUITMENT,T_JOB WHERE T_RECRUMANAGE.RT_ID=T_RECRUITMENT.RT_ID and T_RECRUITMENT.J_ID=T_JOB.J_ID AND RM_STATE=#{state}
+    </select>
+    <select id="getCurrentPageRecruManageByState" resultMap="qq">
+        SELECT * FROM (SELECT T_RECRUMANAGE.*,rownum rn FROM T_RECRUMANAGE WHERE T_RECRUMANAGE.RM_STATE=#{0}) RECRUITMENT,
+  T_RECRUITMENT,T_JOB,T_RESUME WHERE RECRUITMENT.RT_ID=T_RECRUITMENT.RT_ID and T_RECRUITMENT.J_ID=T_JOB.J_ID and RECRUITMENT.R_ID=T_RESUME.R_ID AND rn BETWEEN #{1} AND #{2}
+    </select>
+    <select id="getRecruManageByUserState" resultMap="qq">
+        SELECT * FROM T_RECRUMANAGE,T_RECRUITMENT,T_JOB WHERE T_RECRUMANAGE.RT_ID=T_RECRUITMENT.RT_ID and T_RECRUITMENT.J_ID=T_JOB.J_ID AND RM_STATE=#{1} and U_ID=#{0}
+
+    </select>
+    <select id="getCurrentPageRecruManageByUserState" resultMap="qq">
+        SELECT * FROM (SELECT T_RECRUMANAGE.*,rownum rn FROM T_RECRUMANAGE WHERE T_RECRUMANAGE.RM_STATE=#{0}) RECRUITMENT,
+  T_RECRUITMENT,T_JOB,T_RESUME WHERE RECRUITMENT.RT_ID=T_RECRUITMENT.RT_ID and T_RECRUITMENT.J_ID=T_JOB.J_ID and RECRUITMENT.R_ID=T_RESUME.R_ID AND rn BETWEEN #{1} AND #{2} and RECRUITMENT.U_ID =#{3}
+
+    </select>
+
     <resultMap id="qq" type="cn.cj.model.RecruManage">
         <id property="rm_id" column="RM_ID"/>
         <result property="state" column="RM_STATE"/>

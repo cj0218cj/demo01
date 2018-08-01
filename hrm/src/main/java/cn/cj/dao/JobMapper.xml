@@ -1,11 +1,30 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="cn.cj.dao.JobMapper">
+    <insert id="addJob">
+        INSERT INTO T_JOB (J_ID, D_ID, J_NAME,J_BASEPAY) VALUES (T_JOB_SEQ.nextval,#{dept.d_id},#{j_name},#{j_basePay})
+    </insert>
+    <update id="updateJob">
+        UPDATE T_JOB SET J_NAME=#{j_name},J_BASEPAY=#{j_basePay} where J_ID=#{j_id}
+    </update>
+    <delete id="deleteJob">
+        DELETE FROM T_JOB WHERE J_ID=#{j_id}
+    </delete>
+    <delete id="deleteJobByDept">
+        DELETE FROM T_JOB WHERE D_ID=#{d_id}
+    </delete>
     <select id="getAllJob" resultMap="jobs">
         SELECT * FROM T_JOB
     </select>
     <select id="getJobById" resultMap="jobs">
-        SELECT * FROM T_JOB WHERE J_ID=#{j_id}
+        SELECT * FROM T_JOB,T_DEPT WHERE T_JOB.D_ID=T_DEPT.D_ID AND J_ID=#{j_id}
+    </select>
+    <select id="getJobByDept" resultMap="jobs">
+        SELECT * FROM T_JOB,T_DEPT WHERE T_JOB.D_ID=T_DEPT.D_ID AND T_JOB.D_ID=#{d_id}
+    </select>
+    <select id="getCurrentPageJobByDept" resultMap="jobs">
+         SELECT * FROM (SELECT T_JOB.*,rownum rn FROM T_JOB WHERE T_JOB.D_ID=#{0}) RECRUITMENT,T_DEPT
+       where RECRUITMENT.D_ID=T_DEPT.D_ID AND rn between #{1} and #{2}
     </select>
     <resultMap id="jobs" type="cn.cj.model.Job">
         <id property="j_id" column="J_ID"/>

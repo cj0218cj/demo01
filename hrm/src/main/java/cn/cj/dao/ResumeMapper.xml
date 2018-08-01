@@ -12,12 +12,28 @@
     <delete id="deleteResume">
     DELETE FROM T_RESUME WHERE R_ID=#{r_id}
     </delete>
-    <select id="getResumeById" resultType="cn.cj.model.Resumes">
-        SELECT * from T_RESUME WHERE R_ID=#{r_id}
+    <select id="getResumeById" resultMap="resume">
+        SELECT * from T_RESUME,T_USER WHERE T_RESUME.U_ID=T_USER.U_ID AND R_ID=#{r_id}
     </select>
     <select id="getResumeMapperByUser" resultType="cn.cj.model.Resumes">
         SELECT * from T_RESUME WHERE U_ID=#{u_id}
     </select>
 
-
+<resultMap id="resume" type="cn.cj.model.Resumes">
+    <id property="r_id" column="R_ID"/>
+    <result property="r_name" column="R_NAME"/>
+    <result property="r_age" column="R_AGE"/>
+    <result property="r_sex" column="R_SEX"/>
+    <result property="r_school" column="R_SCHOOL"/>
+    <result property="r_major" column="R_MAJOR"/>
+    <result property="r_phone" column="R_PHONE"/>
+    <result property="r_workingYears" column="R_WORKINGYEARS"/>
+    <result property="r_workExperience" column="R_WORKEXPERIENCE"/>
+    <result property="r_introduce" column="R_INTRODUCE"/>
+    <association property="r_user" javaType="cn.cj.model.User">
+        <id property="u_id" column="U_ID"/>
+        <result property="u_name" column="U_NAME"/>
+        <result property="u_pass" column="U_PASS"/>
+    </association>
+</resultMap>
 </mapper>

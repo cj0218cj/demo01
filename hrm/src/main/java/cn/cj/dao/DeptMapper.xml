@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.cj.dao.DeptMapper">
+    <insert id="addDept">
+        INSERT INTO T_DEPT (D_ID, D_NAME, D_DATE) VALUES (T_DEPT_SEQ.nextval,#{d_name},sysdate)
+    </insert>
+    <update id="updateDept">
+        UPDATE T_DEPT SET D_NAME=#{d_name} where D_ID=#{d_id}
+    </update>
+    <delete id="deleteDept">
+        DELETE FROM T_DEPT WHERE D_ID=#{d_id}
+    </delete>
+    <select id="getDeptById" resultType="cn.cj.model.Dept">
+        SELECT * FROM T_DEPT WHERE D_ID=#{d_id}
+    </select>
+    <select id="getDeptByName" resultType="cn.cj.model.Dept">
+        SELECT * FROM T_DEPT WHERE D_NAME=#{d_name}
+    </select>
+    <select id="getAllDept" resultType="cn.cj.model.Dept">
+        SELECT * FROM T_DEPT,T_JOB WHERE T_DEPT.D_ID=T_JOB.D_ID
+    </select>
+    <select id="getCurrentPageDepts" resultType="cn.cj.model.Dept">
+        SELECT * FROM (SELECT T_DEPT.*,rownum rn FROM T_DEPT) RECRUITMENT
+       where  rn between #{0} and #{1}
+    </select>
+</mapper>

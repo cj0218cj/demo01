@@ -18,7 +18,7 @@
 </head>
 <body>
 <a href="newRecruitment.do" >新建招聘信息</a>
-<a href="deleteRecruitment.do?currentPage=1">删除招聘信息</a>
+<a href="deleteRecruitment.do?currentPage=1">查看未发布招聘信息</a>
 <%
     List<Recruitment> list= (List<Recruitment>) session.getAttribute("allRecuritment");
     int totalPages= (int) session.getAttribute("totalPages");

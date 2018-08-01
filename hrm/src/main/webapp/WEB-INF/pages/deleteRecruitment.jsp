@@ -29,6 +29,9 @@
     发布时间：<%=list.get(i).getRt_time()%>
 
 </span>
+<form action="updateInviteMessage.do?rt_id=<%=list.get(i).getRt_id()%>" method="post">
+    <input type="submit" value="修改信息">
+</form>
 <form action="recruitmentDelete.do?rt_id=<%=list.get(i).getRt_id()%>" method="post">
     <input type="submit" value="删除">
 </form>

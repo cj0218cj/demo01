@@ -15,4 +15,8 @@ public interface RecruManageService {
     List<RecruManage> getRecruManageByRid(int r_id);
     List<RecruManage> getRecruManageByUser(RecruManage recruManage);
     RecruManage getRecruManageById(int rm_id);
+    List<RecruManage> getRecruManageByState(int state);
+    List<RecruManage> getCurrentPageRecruManageByState(int state,int begin,int end);
+    List<RecruManage> getRecruManageByUserState(User user,int state);
+    List<RecruManage> getCurrentPageRecruManageByUserState(int state,int begin,int end,User user);
 }
